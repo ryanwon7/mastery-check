@@ -58,10 +58,11 @@ app.post("/mastery", function(req,res) {
         champion_id = json[0].championId
 
         for (i=0; i<json.list.length(), i++)
-            html_string += '<tr><td>' + json[i].championLevel + '</td><td>' + json[i].championId + '</td><td>' + json[i].championPoints + '</td><td>' + json[i].championPointsUntilNextLevel + '</td></tr>'
+            html_string += '<tr><td>' + json[i].championLevel + '</td><td>' + champion[json[i].championId] + '</td><td>' + json[i].championPoints + '</td><td>' + json[i].championPointsUntilNextLevel + '</td></tr>'
         })
 
     html_string += '</table>'
+    res.send(html_string)
 
     var total_mastery_URL = 'https://na1.api.riotgames.com/lol/champion-mastery/v4/scores/by-summoner/'
     total_mastery_URL += encrypted_summoner_id
@@ -69,11 +70,9 @@ app.post("/mastery", function(req,res) {
 
     request.get(total_mastery_URL, function (error, response, body) {
         total_mastery = JSON.parse(body)
-        html_string = ''
-        res.send(html_string)
     })
 
-    con.query('INSERT INTO mastery (summoner, champion, total_mastery, highest_mastery) VALUES (' + summoner_name + ', ' + champion_id + ', ' + total_mastery + ', ' + highest_mastery + ');'),
+    con.query('INSERT INTO mastery (summoner, champion, total_mastery, highest_mastery) VALUES (' + summoner_name + ', ' + champion[champion_id] + ', ' + total_mastery + ', ' + highest_mastery + ');'),
         function(err,rows,fields) {
             if (err) {
                 console.log('Error during query processing')
@@ -89,10 +88,11 @@ app.post("/account", function(req,res) {
     summoner_URL += req.body.summoner_name
     summoner_URL += '?api_key=' + api_key
 
+
     request.get(summoner_URL, function(error, response, body) {
         var json = JSON.parse(body)
-        html_string = 'http://ddragon.leagueoflegends.com/cdn/9.17.1/img/profileicon/' + json.profileIconId + '.png'
-        return
+        html_string = '<img src="http://ddragon.leagueoflegends.com/cdn/9.17.1/img/profileicon/' + json.profileIconId + '.png">\n' + json.name + '\n' + json.summonerLevel
+        res.send(html_string)
     })
 })
 
