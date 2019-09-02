@@ -30,6 +30,7 @@ con.connect(function (err) {
 
 app.post("/mastery", function(req,res) {
     var encrypted_summoner_id = ''
+
     var summoner_URL = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
     summoner_URL += req.body.summoner_name
     summoner_URL += '?api_key=' + api_key
@@ -41,9 +42,11 @@ app.post("/mastery", function(req,res) {
 
     var mastery_URL = 'https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/'
     mastery_URL += encrypted_summoner_id
+    mastery_URL += '?api_key=' + api_key
+
     request.get(mastery_URL, function(error, response, body) {
         var json = JSON.parse(body)
-        return
+        html_string = ''
     })
 })
 
@@ -54,6 +57,7 @@ app.post("/account", function(req,res) {
 
     request.get(summoner_URL, function(error, response, body) {
         var json = JSON.parse(body)
+        html_string = 'http://ddragon.leagueoflegends.com/cdn/9.17.1/img/profileicon/' + json.profileIconId + '.png'
         return
     })
 })
