@@ -25,7 +25,7 @@ function getMastery() {
             $("").html(msg);
         },
         error: function(xhr, ajaxOptions, thrownError) {
-            $("").html("Error retrieving and displaying table.")
+            $("").html("Error retrieving and displaying mastery.")
         }
     })
 }
