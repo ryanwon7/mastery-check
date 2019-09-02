@@ -32,7 +32,7 @@ con.connect(function (err) {
 app.post("/mastery", function(req,res) {
     var summoner_name = req.body.summoner_name
     var encrypted_summoner_id = ''
-    var champion_mastery = 0
+    var highest_mastery = 0
     var total_mastery = 0
     var champion_id = 0
 
@@ -51,7 +51,7 @@ app.post("/mastery", function(req,res) {
 
     request.get(mastery_URL, function(error, response, body) {
         var json = JSON.parse(body)
-        champion_mastery = json[0].championPoints
+        highest_mastery = json[0].championPoints
         champion_id = json[0].championId
         html_string = ''
     })
@@ -63,7 +63,18 @@ app.post("/mastery", function(req,res) {
     request.get(total_mastery_URL, function (error, response, body) {
         total_mastery = JSON.parse(body)
         html_string = ''
+        res.send(html_string)
     })
+
+    con.query('INSERT INTO mastery (summoner, champion, total_mastery, highest_mastery) VALUES (' + summoner_name + ', ' + champion_id + ', ' + total_mastery + ', ' + highest_mastery + ');'),
+        function(err,rows,fields) {
+            if (err) {
+                console.log('Error during query processing')
+            }
+            else {
+                console.log('Summoner successfully added')
+            }
+        }
 })
 
 app.post("/account", function(req,res) {
