@@ -57,7 +57,7 @@ app.post("/mastery", function(req,res) {
         highest_mastery = json[0].championPoints
         champion_id = json[0].championId
 
-        for (i=0; i<json.list.length(), i++) {
+        for (i=0; i<json.list.length; i++) {
             html_string += '<tr><td>' + json[i].championLevel + '</td><td>' + champion[json[i].championId] + '</td><td>' + json[i].championPoints + '</td><td>' + json[i].championPointsUntilNextLevel + '</td></tr>'
         }
     })
