@@ -31,12 +31,8 @@ app.get("/mastery", function(req,res) {
     return
 })
 
-app.get("/getMastery", function(req,res) {
+app.get("/account", function(req,res) {
     return
-})
-
-app.get('/home', function (req,res) {
-    res.redirect("./sk3665_HW5.html")
 })
 
 app.listen(8080, function() {
