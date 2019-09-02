@@ -49,12 +49,19 @@ app.post("/mastery", function(req,res) {
     mastery_URL += encrypted_summoner_id
     mastery_URL += '?api_key=' + api_key
 
+    var html_string = '<table><tr><th>Mastery</th><th>Champion Name</th><th>Mastery Points</th><th>% to Next Level</th></tr>'
+
     request.get(mastery_URL, function(error, response, body) {
         var json = JSON.parse(body)
+
         highest_mastery = json[0].championPoints
         champion_id = json[0].championId
-        html_string = ''
-    })
+
+        for (i=0; i<json.list.length(), i++)
+            html_string += '<tr><td>' + json[i].championLevel + '</td><td>' + json[i].championId + '</td><td>' + json[i].championPoints + '</td><td>' + json[i].championPointsUntilNextLevel + '</td></tr>'
+        })
+
+    html_string += '</table>'
 
     var total_mastery_URL = 'https://na1.api.riotgames.com/lol/champion-mastery/v4/scores/by-summoner/'
     total_mastery_URL += encrypted_summoner_id
