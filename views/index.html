@@ -9,24 +9,28 @@
 	<link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-	<div data-role="header" data-position="fixed" data-tap-toggle="false"> <!--Set Fixed Header-->
-		<h1>Mastery Checker</h1>
+	<div class="background">
+		<div data-role="header" data-position="fixed" data-tap-toggle="false"> <!--Set Fixed Header-->
+			<h1>Mastery Checker - League of Legends</h1>
+		</div>
+		<div data-role="navbar" data-theme="c">
+				<ul>
+					<li><a href="index.html" data-icon="home" class="ui-btn-active ui-state-persist">About</a></li>
+					<li><a href="search.html" data-icon="search">Your Mastery</a></li>
+					<li><a href="summoner.html" data-icon="info">Summoner Info</a></li>
+					<li><a href="leaderboard.html" data-icon="star">Leaderboard</a></li>
+				</ul>
+		</div><!-- /navbar -->
+		<div class="title" data-role="none">
+			<h1>About the Mastery System</h1>
+		</div>
+		<div class="info" data-role="none">
+			<p> League of Legends is a popular multiplayer online battle arena(MOBA) video game, where a player assumes the role of a summoner. This summoner controls a certain champion which possessess a set of unique abilities, and battle against a team of other players. The game has two teams of five champions face off against each other, where the goal is to destroy the opposing team's Nexus, a structure in the center of each base. To achieve this goal, players can kill minions(neutral monsters) or enemy players to earn gold to buy items to power up their champions. </p>
+			<img class="logo" src="../images/Lol_logo.png" alt="League of Legends" width="50%">
+			<p> The game also contains a mastery system to display proficiency on champions. Every game that a player uses a champion, they gain mastery points for that champion based on their game performance and outcome. Based on the mastery points, they are given a certain mastery status for that champion from Mastery 1 to Mastery 7, with the icons shown below reprsenting the masteries from 1 to 7.</p>
+			<img class="masteries" src="../images/masteries.png" alt="Mastery1" width="85%">
+			<p> This application allows you to view the mastery rank, mastery points, and percent progress to the next tier. Additionally, you can also view your information regarding your summoner status, such as currently selected summoner icon and summoner level.
+		</div>
 	</div>
-	<div class="title" data-role="none">
-		<h1>Mastery Checker - League of Legends</h1>
-	</div>
-	<div class="info" data-role="none">
-		<p> Welcome to the Mastery Checker application for League of Legends! Enter your summoner name below to get started.
-		</p>
-	</div>
-	<div class="input">	
-		<p> Summoner Name <input type="text" id="summoner"></p>
-	</div>
-	<div class="buttonalign"> 
-		<a href="result.html">
-			<button class="button" data-role="none">Add Student</button> <!--Submit Button that calls JS method and AJAX call-->
-		</a>
-	</div>
-	<script type="text/Javascript" src="../script.js"></script> <!--JS Script link-->
 </body>
 </html>

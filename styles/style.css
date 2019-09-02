@@ -1,12 +1,42 @@
 .title, .info, .input {
 	margin: 20px;
+	font-family: Verdana;
+	color: #123D6A;
+}
+.input {
+	font-size: 20px;
+}
+.logo, .masteries {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.masteries {
+	max-width: 800px;
+}
+.logo {	
+	max-width: 600px;
+}
+.background {
+	width: 80%;
+	height: 100%;
+	margin-left: 10%;
+	background: #EDE2DC;
+}
+.title {
+	text-align: center;
+}
+.ui-page {
+	height: 90%;
+	background: #5D5C61;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #EDC8B8, #938E94);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #EDC8B8, #938E94); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .buttonalign { /*Aligns the center of the div for the button to place it in the center of the page*/
 	text-align: center;
 }
-
 .button { /*Styling for the submission button*/
-	background-color: #4CAF50;
+	background-color: #123D6A;
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -18,4 +48,10 @@
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 10px;
+}
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
 }
