@@ -78,18 +78,17 @@ app.post("/mastery", function(req,resp) {
     }).catch(err => console.log)  
     })
 
-app.post("/account", function(req,res) {
-    var summoner_URL = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
-    summoner_URL += req.body.summoner_name
-    summoner_URL += '?api_key=' + api_key
-    request.get(summoner_URL, function(error, response, body) {
+app.post("/account", function(reqs,res) {
+    var summoners_URL = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
+    summoners_URL += reqs.body.summoner_name
+    summoners_URL += '?api_key=' + api_key
+    request.get(summoners_URL, function(error, response, body) {
         var json = JSON.parse(body)
-        console.log(json.status)
         if (json.status != undefined) {
             res.write('<p>We could not find a summoner with that name. Please check your input and try again.</p>')
             res.end()
         } else {
-            html_string = '<p>Summoner Icon:</p><br><img src="http://ddragon.leagueoflegends.com/cdn/9.17.1/img/profileicon/' + json.profileIconId + '.png">\n<p>Summoner Name: ' + json.name + '</p>\n<p>Summoner Level: ' + json.summonerLevel + '</p>'
+            html_string = '<p>Summoner Icon:</p><br><img src="http://ddragon.leagueoflegends.com/cdn/9.17.1/img/profileicon/' + json.profileIconId + '.png" width="10%">\n<p>Summoner Name: ' + json.name + '</p>\n<p>Summoner Level: ' + json.summonerLevel + '</p>'
             res.write(html_string)
             res.end()
         }

@@ -62,7 +62,7 @@ table, td, th{
 th, td {
   	padding: 10px;
   	text-align: center;
-	width: 26%;
+	width: 27%;
 }
 th {
   	height: 40px;
@@ -72,9 +72,12 @@ th {
 td {
 	background: #ffffff
 }
+h1 {
+	font-size: 26px;
+}
 .scrollable {
 	display: block;
-	height: 75%;
+	height: 52%;
 	overflow-y: scroll;
 	table-layout:fixed; width:90%;
     margin-left: auto;

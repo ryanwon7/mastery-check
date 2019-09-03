@@ -2,7 +2,7 @@
 
 function requestAccount() {
     var URL = 'http://localhost:8080/account'
-    var summoner_name = $('#summoner').val()
+    var summoner_name = $('#summoners').val()
 
     $.ajax({
         type: 'POST',
